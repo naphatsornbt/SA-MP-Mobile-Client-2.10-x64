@@ -30,7 +30,7 @@ CSettings::CSettings()
 	m_Settings.szNickName[length] = '\0';
 	length = reader.Get("client", "password", "").copy(m_Settings.szPassword, MAX_SETTINGS_STRING);
 	m_Settings.szPassword[length] = '\0';
-	m_Settings.iServerID = reader.GetInteger("client", "serverid", 1);
+	m_Settings.iServerID = reader.GetInteger("client", "servernumber", 1);
 
 	// debug
 	m_Settings.bDebug = reader.GetBoolean("debug", "debug", false);
@@ -49,46 +49,25 @@ CSettings::CSettings()
 	m_Settings.fChatSizeY = reader.GetReal("gui", "ChatSizeY", 220.0f);
 	m_Settings.iChatMaxMessages = reader.GetInteger("gui", "ChatMaxMessages", 6);
 
-	// spawnscreen
-	m_Settings.fSpawnScreenPosX = reader.GetReal("gui", "SpawnScreenPosX", 660.0f);
-	m_Settings.fSpawnScreenPosY = reader.GetReal("gui", "SpawnScreenPosY", 950.0f);
-	m_Settings.fSpawnScreenSizeX = reader.GetReal("gui", "SpawnScreenSizeX", 600.0f);
-	m_Settings.fSpawnScreenSizeY = reader.GetReal("gui", "SpawnScreenSizeY", 100.0f);
-
-	// nametags
-	m_Settings.fHealthBarWidth = reader.GetReal("gui", "HealthBarWidth", 100.0f);
-	m_Settings.fHealthBarHeight = reader.GetReal("gui", "HealthBarHeight", 10.0f);
-
-	// scoreboard
-	m_Settings.fScoreBoardSizeX = reader.GetReal("gui", "ScoreBoardSizeX", 846.0f);
-	m_Settings.fScoreBoardSizeY = reader.GetReal("gui", "ScoreBoardSizeY", 614.0f);
-
 	// passenger
 	m_Settings.bPassengerUseTexture = reader.GetBoolean("gui", "PassengerUseTexture", true);
 	m_Settings.fPassengerTextureSize = reader.GetReal("gui", "PassengerTextureSize", 30.0f);
 	m_Settings.fPassengerTextureX = reader.GetReal("gui", "PassengerTexturePosX", 120.0f);
 	m_Settings.fPassengerTextureY = reader.GetReal("gui", "PassengerTexturePosY", 430.0f);
 
+	// gui
 	m_Settings.iDialog = reader.GetBoolean("gui", "Dialog", true);
 
+	// voice possi
 	m_Settings.bVoiceChatEnable = reader.GetBoolean("gui", "VoiceChatEnable", true);
 	m_Settings.iVoiceChatKey = reader.GetInteger("gui", "VoiceChatKey", 66);
 	m_Settings.fVoiceChatSize = reader.GetReal("gui", "VoiceChatSize", 30.0f);
 	m_Settings.fVoiceChatPosX = reader.GetReal("gui", "VoiceChatPosX", 1520.0f);
 	m_Settings.fVoiceChatPosY = reader.GetReal("gui", "VoiceChatPosY", 480.0f);
 
+	// keyboard
 	m_Settings.iAndroidKeyboard = reader.GetBoolean("gui", "androidkeyboard", false);
-	m_Settings.iFirstPerson = reader.GetBoolean("gui", "firstperson", true);
-	m_Settings.iCutout = reader.GetBoolean("gui", "cutout", false);
-	m_Settings.iFPSCounter = reader.GetBoolean("gui", "fps", true);
-	m_Settings.iFPSCount = reader.GetInteger("gui", "FPSLimit", 60);
-	m_Settings.iHPArmourText = reader.GetBoolean("gui", "hparmourtext", false);
-	m_Settings.iOutfitGuns = reader.GetBoolean("gui", "outfitguns", false);
-	m_Settings.iPCMoney = reader.GetBoolean("gui", "pcmoney", false);
-	m_Settings.iRadarRect = reader.GetBoolean("gui", "radarrect", false);
-	m_Settings.iSkyBox = reader.GetBoolean("gui", "skybox", false);
-	m_Settings.iSnow = reader.GetBoolean("gui", "snow", false);
-    m_Settings.iHud = reader.GetBoolean("gui", "hud", false);
+	
 	FLog("Settings loaded.");
 }
 
